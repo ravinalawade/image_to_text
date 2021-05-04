@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            .middle{
+                text-align: center;
+                position: relative;
+                height: 100%;
+                width: 50%;
+                left:25%;
+                background-color: aqua;
+            }
+        </style>
+        <script>
+            var file
+            var loadFile = function(event) {
+                var output = document.getElementById('output');
+                file=event.target.files[0];
+                output.src = URL.createObjectURL(event.target.files[0]);
+                output.onload = function() {
+                URL.revokeObjectURL(output.src) // free memory
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <div class="middle">
+            <!-- <p>Image to Text</p>
+            <label class="btn btn-default">
+                Upload <input type="file" accept="image/*" onchange="loadFile(event)" hidden>
+            </label>
+            <br>
+            <img id="output"/> -->
+            <form method = "post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="file" class="btn btn-default" accept="image/*" name="image">
+                <input type="text" name="test">
+                <br>
+                <button type="submit">Upload</button>
+            </form>
+            <br>
+            <!-- <button onclick="convert()" class="btn btn-default">Convert</button> -->
+            <textarea></textarea>
+        </div>
+    </body>
+</html>
