@@ -4,7 +4,7 @@ from .functions import *
 # Create your views here.
 def home(request):
     if request.method == 'POST':
-        print(request.POST,request.FILES)
+        # print(request.POST,request.FILES)
         img=request.FILES['image']
         handle_uploaded_file(img)
         data=ml()
@@ -127,6 +127,6 @@ def valid_xml_char_ordinal(c):
 
 def ml():
     a = get_captcha_text_from_captcha_image("main/templates/test.jpg")
-    print(a)
+    print("done")
     cleaned_string = ''.join(c for c in a if valid_xml_char_ordinal(c))
     return(cleaned_string)
