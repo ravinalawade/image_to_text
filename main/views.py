@@ -8,7 +8,8 @@ def home(request):
         img=request.FILES['image']
         handle_uploaded_file(img)
         data=ml()
-    return render(request, "home.html", {})
+        return render(request, "home.html", {"data":data,"flag":"1"})
+    return render(request, "home.html", {"flag":"0"})
 
 
 #####ML#########
@@ -128,3 +129,4 @@ def ml():
     a = get_captcha_text_from_captcha_image("main/templates/test.jpg")
     print(a)
     cleaned_string = ''.join(c for c in a if valid_xml_char_ordinal(c))
+    return(cleaned_string)
