@@ -17,7 +17,8 @@ from pytesseract import image_to_string
 import cv2
 import numpy
 import os
-
+import pytesseract
+pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'
 
 def preprocess_image_using_pil(image_path):
     # unblur, sharpen filters
