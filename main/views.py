@@ -8,8 +8,8 @@ def home(request):
         img=request.FILES['image']
         handle_uploaded_file(img)
         data=ml()
-        return render(request, "home.html", {"data":data})
-    return render(request, "home.html", {"data":"Upload image"})
+        return render(request, "index.html", {"data":data})
+    return render(request, "index.html", {"data":" "})
 
 
 #####ML#########
