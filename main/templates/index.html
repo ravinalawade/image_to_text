@@ -180,6 +180,11 @@
     <!--====== PRELOADER PART ENDS ======-->
     
     <!--====== HEADER PART START ======-->
+    {% if data!=" " %}
+    <script>
+        $(".file-upload-image").scrollTop($(".file-upload-image")[0].scrollHeight);
+    </script>
+    {% endif %}
     
     <header class="header-area">
         <div class="navbar-area headroom">
